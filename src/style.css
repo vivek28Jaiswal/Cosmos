@@ -1,0 +1,321 @@
+@font-face {
+  font-family: 'Crostan';
+  src: url('./assets/fonts/Crostan-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Crostan';
+  src: url('./assets/fonts/Crostan-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Crostan-Medium';
+  src: url('./assets/fonts/Crostan-SemiBold.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Crostan-SemiBold';
+  src: url('./assets/fonts/Crostan-SemiBold.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Crostan-Bold';
+  src: url('./assets/fonts/Crostan-Bold.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('./assets/fonts/PPNeueMontreal-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PP Neue Montreal Medium';
+  src: url('./assets/fonts/PPNeueMontreal-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+:root {
+  --font-crostan-medium: 'Crostan-Medium', 'Crostan-SemiBold', 'Crostan', serif;
+  --font-crostan-bold: 'Crostan-Bold', 'Crostan', serif;
+  --font-pp: 'PP Neue Montreal', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-pp-medium: 'PP Neue Montreal Medium', 'PP Neue Montreal', -apple-system, BlinkMacSystemFont, sans-serif;
+  --bg-color: #000000;
+  --text-white: #ffffff;
+  --text-muted: #ffffff;
+  --gold-primary: #df9e48;
+  --gold-glow: rgba(223, 158, 72, 0.4);
+  --gold-hover: #ebaa54;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #050505;
+  font-family: var(--font-pp);
+  color: var(--text-white);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ========================================================
+   LAYER 1: BACKGROUND HEADER BRAND LOGO (BEHIND WIRE)
+   ======================================================== */
+.nav-brand-background {
+  position: fixed;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.brand-text {
+  font-family: var(--font-crostan-medium);
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-white);
+  display: inline-block;
+}
+
+/* ========================================================
+   LAYER 2: 3D WEBGL CANVAS (LAMP, SUSPENSION WIRE & WORDMARK)
+   ======================================================== */
+#webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ========================================================
+   LAYER 3: FOREGROUND UI COMPONENTS (NAV LINKS & CTA BUTTON)
+   ======================================================== */
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.editorial-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+.nav-link {
+  font-family: var(--font-pp);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0px;
+  color: var(--text-white);
+  text-decoration: none;
+}
+
+.cart-btn {
+  background: none;
+  border: none;
+  color: var(--text-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.light-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text-white);
+  font-family: var(--font-pp-medium);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.light-toggle-btn .toggle-text {
+  font-family: var(--font-pp-medium);
+  font-weight: 500;
+}
+
+.light-toggle-btn .toggle-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--gold-primary);
+  box-shadow: 0 0 8px var(--gold-glow);
+  transition: all 0.3s ease;
+}
+
+.light-toggle-btn.off {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.light-toggle-btn.off .toggle-dot {
+  background-color: #555555;
+  box-shadow: none;
+}
+
+/* ==========================================================
+   FLOATING STATEMENTS AROUND THE LAMP (POSITIONED BEHIND 3D WIRE)
+   ========================================================== */
+.editorial-statements {
+  position: fixed;
+  top: 22%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.statement-left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.statement-left p {
+  font-family: var(--font-pp);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0px;
+  color: var(--text-white);
+  text-align: right;
+  max-width: 240px;
+}
+
+.statement-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+
+.statement-right p {
+  font-family: var(--font-pp);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0px;
+  color: var(--text-white);
+  text-align: left;
+  max-width: 200px;
+}
+
+/* ==========================================================
+   BOTTOM ACTION CTA
+   ========================================================== */
+.cta-container {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+.gold-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  background-color: var(--gold-primary);
+  color: #0c0c0e;
+  text-decoration: none;
+  font-family: var(--font-pp);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  box-shadow: 0 4px 18px rgba(223, 158, 72, 0.35);
+  line-height: 1.2;
+}
+
+.gold-pill-btn span {
+  font-family: var(--font-pp);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .editorial-nav {
+    padding: 20px 24px;
+  }
+  .nav-group.left {
+    display: none;
+  }
+  .editorial-statements {
+    top: 18%;
+  }
+  .statement-left {
+    padding-right: 12px;
+  }
+  .statement-right {
+    padding-left: 12px;
+  }
+  .statement-left p, .statement-right p {
+    font-size: 13px;
+    max-width: 140px;
+  }
+}
