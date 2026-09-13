@@ -319,3 +319,54 @@ body {
     max-width: 140px;
   }
 }
+
+/* ========================================================
+   MOBILE / SMALLER SCREEN NOTICE OVERLAY (WIP)
+   ======================================================== */
+.mobile-notice-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #050505;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  text-align: center;
+}
+
+.mobile-notice-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 290px;
+}
+
+.mobile-brand {
+  font-family: var(--font-crostan-medium);
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-white);
+  margin-bottom: 16px;
+}
+
+.mobile-notice-subtitle {
+  font-family: var(--font-pp);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 0.70);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .mobile-notice-overlay {
+    display: flex;
+  }
+}
